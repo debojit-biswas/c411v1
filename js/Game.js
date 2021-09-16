@@ -44,7 +44,9 @@ class Game {
     form.hide();
     
     Player.getPlayerInfo();
-    
+    player.getFinishedPlayers()
+
+
     if(allPlayers !== undefined){
       background(rgb(198,135,103));
       image(track, 0,-displayHeight*4,displayWidth, displayHeight*5);
@@ -89,16 +91,23 @@ class Game {
     if(keyIsDown(UP_ARROW) && player.index !== null){
       player.distance +=10
       player.update();
-    }
 
-    if(player.distance > 3860){
+         }
+
+    if(player.distance > 5300){
       gameState = 2;
+      //player.rank=player.rank+1
+      player.rank+=1
+       Player.updateFinishedPlayers(player.rank)
     }
-   
+   console.log(player.distance)
     drawSprites();
   }
 
+
   end(){
     console.log("Game Ended");
+    console.log("rank"+player.rank)
   }
+
 }
